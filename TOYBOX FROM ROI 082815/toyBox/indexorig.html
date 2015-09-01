@@ -1,0 +1,144 @@
+<html>
+	<head>
+		<title>ToyBox</title>
+		<link rel="toybox icon" href="images/toybox.ico" type="image/x-icon" />
+
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/toyBox.css"/>
+		<script src="js/toyBox.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-linedtextarea.js"></script>
+		<script>
+			$(function() {
+				$(".lined").linedtextarea(
+					{}
+				);
+			});
+		</script>
+	
+	</head>
+	<body>
+		<header>
+			BANNER HERE
+		</header>
+	
+		
+		
+	</body>
+
+</html>
+
+<section class="container-fluid">
+			<!-- Start of Main Tab Menu -->
+			<div id="mainMenu">
+				<div id="mainMenuItems">
+					<button onclick="showTabs(this.value)" value="ddTab" id="ddButton" class="menuTabs">Drag&Drop</button>
+					<button onclick="showTabs(this.value)" value="scriptTab" id="scriptButton" class="defaultOption">Script</button>
+					<button onclick="showTabs(this.value)" value="resultsTab" id="resultsButton" class="menuTabs">Results</button>
+				</div>
+			</div>
+			<!-- End of Main Tab Menu -->
+
+			<!-- Start for panel1 -->
+			<div id="panel1" style="display: none">
+				
+				<div id="menu">
+					<div id="menuItems" >
+						<button onclick="showTabs(this.value)" value="variablesTab" id="varButton" class="defaultOption">VARIABLES</button>
+						<button onclick="showTabs(this.value)" value="operationsTab" id="operationsButton" class="menuTabs">OPERATIONS</button>
+						<button onclick="showTabs(this.value)" value="operatorsTab" id="operatorsButton" class="menuTabs">OPERATORS</button>
+						<button onclick="showTabs(this.value)" value="numbersTab" id="numbersButton" class="menuTabs">NUMBERS</button>
+					</div>
+					<div id="menuPane">
+						<div id="variables" ondrop="drop(event)" ondragover="allowDrop(event)">
+							<img id="rducky" src="images/rducky.gif" draggable="true" ondragstart="drag(event)" />
+							<img id="numblk" src="images/numblk.gif" draggable="true" ondragstart="drag(event)" />
+							<img id="letblk" src="images/letblk.gif" draggable="true" ondragstart="drag(event)" />
+							<img id="jrope" src="images/jrope.jpg" draggable="true" ondragstart="drag(event)" />
+							<img id="mbox" src="images/mbox.jpg" draggable="true" ondragstart="drag(event)" />
+						</div>
+
+						<div id="operations" style="display:none">
+							<img id="hoola" src="images/hoola.jpg" draggable="true" ondragstart="drag(event)" />
+							<img id="hoop" src="images/hoop.jpg" draggable="true" ondragstart="drag(event)" />
+							<img id="exclpt" src="images/excpoint.png" draggable="true" ondragstart="drag(event)" />
+						</div>
+
+						<div id="operators" style="display:none">
+							<img id="plusop" src="images/plusOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="minusop" src="images/minusOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="multop" src="images/multOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="divop" src="images/divOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="modop" src="images/modOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="lthop" src="images/lthOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="gtop" src="images/gtOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="lteop" src="images/lteOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="gteop" src="images/gteOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="eqop" src="images/eqOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="neqop" src="images/neqOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="andop" src="images/andOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="orop" src="images/orOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="notop" src="images/notOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="incop" src="images/incOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="decop" src="images/decOp.png" draggable="true" ondragstart="drag(event)" />
+							<img id="opare" src="images/opare.png" draggable="true" ondragstart="drag(event)" />
+							<img id="cpare" src="images/cpare.png" draggable="true" ondragstart="drag(event)" />
+						</div>
+
+						<div id="numbers" style="display:none">
+							<img id="number1" src="images/numOne.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number2" src="images/numTwo.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number3" src="images/numThree.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number4" src="images/numFour.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number5" src="images/numFive.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number6" src="images/numSix.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number7" src="images/numSeven.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number8" src="images/numEight.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number9" src="images/numNine.png" draggable="true" ondragstart="drag(event)" />
+							<img id="number0" src="images/numZero.png" draggable="true" ondragstart="drag(event)" />
+						</div>
+					</div>
+				</div>
+				
+
+				<form id="ddeditor" method="POST">
+					<input type="hidden" value="" id="vardec" name="vardec" />
+					<input type="hidden" value="" id="maincode" name="maincode"/>
+
+					<div id="varDeclaration" ondrop="drop(event)" ondragover="allowDrop(event)">
+						<p>Variable Declaration</p>
+						<ul id="varList"></ul>
+					</div>
+
+					<div id="mainCode" ondrop="drop(event)" ondragover="allowDrop(event)">
+						<p>Main Code</p>
+
+					</div>
+
+					<button type="button" id="processform" onclick="processForm()">CONVERT!</button>
+				</form>
+
+			</div>
+			<!-- End of panel1 -->
+
+			<!-- Start of panel2 -->
+			<div id="panel2" class="codeArea">
+				
+				<form method="post" method="POST" name="editor">
+					<textarea name="query_input" id="query_input" class="lined"></textarea>
+					
+					<button type="button" id="runCode" onclick="processCode()">RUN</button>
+					<!--<input type="reset" id="resetCode" value="CLEAR"/>-->
+					<input type="button" id="clearCode" value="NEW" onclick="clearEditor()"/>
+					
+				</form>
+			</div>
+			<!-- End of panel2 -->
+
+			<!-- Start of panel3 -->
+
+			<div id="panel3" class="result" style="display: none">
+			</div>
+			<!-- End of panel3 -->
+
+		</section>

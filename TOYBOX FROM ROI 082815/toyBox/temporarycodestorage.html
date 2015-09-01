@@ -1,0 +1,322 @@
+<div id="codebody" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="hoola" src="images/hoola.png" draggable="true" ondragstart="drag(event)" />
+	<img id="hoop" src="images/hoop.png" draggable="true" ondragstart="drag(event)" />
+	<img id="biggerthan" src="images/biggerthan.png" draggable="true" ondragstart="drag(event)" />
+	<img id="mbopen" src="images/mbOpen.png" draggable="true" ondragstart="drag(event)" />
+	<img id="mbclose" src="images/mbClose.png" draggable="true" ondragstart="drag(event)" />
+	<img id="hole" src="images/hole.png" draggable="true" ondragstart="drag(event)" />
+</div>
+
+<div id="mainSection" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<p>Main</p>
+</div>
+
+<div id="functionSection" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<p>Functions</p>
+</div>
+
+<input type="hidden" value="" id="hoolahoop" name="hoolahoop"/>
+
+<div id="menu" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<img id="rducky" src="images/rducky.jpg" draggable="true" ondragstart="drag(event)" />
+	<img id="numblk" src="images/numblk.jpg" draggable="true" ondragstart="drag(event)" />
+</div>
+
+<form id="myForm" method="POST" action="testing.php">
+<!-- This is where the variable declaration could be done. -->
+<div id="variableSection" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<p>Variable declaration:</p>
+</div>
+
+<input type="hidden" value="" id="vars" name="vars"/>
+
+<input type="submit"></input>
+</form>
+
+function getVarNameVal() {
+	var varType = this.id;
+
+	var varName = prompt("Variable name");
+	var varVal = prompt("Variable value");
+ 
+	if (varName == "") {
+		++index;
+		varName = "var" + index;
+	}
+
+	if ((varVal != null)) {
+		var variable = varType + "_" + varName + "_" + varVal;
+		varlist.push(variable);
+		document.getElementById('vars').value = varlist;
+	}
+}
+
+
+$variables = explode(",",$_POST['vars']);
+		$RDUCKY = [];
+		$NUMBLK = [];
+		foreach($variables as $var) {
+			$info = explode("_",$var);
+			if(strcmp($info[0],"rducky")==0) {
+				$RDUCKY[$info[1]] = $info[2];
+			}
+			else if(strcmp($info[0],"numblk")==0) {
+				$NUMBLK[$info[1]] = $info[2];
+			}
+		}
+
+		echo "OPENBOX<br />";
+		foreach($RDUCKY as $key=>$value) {
+			if(empty($value)) {
+				echo "RDUCKY ".$key."#<br />";
+			}
+			else {
+				echo "RDUCKY ".$key." AS ".$value."#<br />";
+			}
+		}
+
+		
+		foreach($NUMBLK as $key=>$value) {
+			if(empty($value)) {
+				echo "NUMBLK ".$key."#<br />";
+			}
+			else {
+				echo "NUMBLK ".$key." AS ".$value."#<br />";
+			}
+		}
+
+		$hh = explode(",",$_POST['hoolahoop']);
+		foreach($hh as $hhtok) {
+			if(preg_match('~hoola~',$hhtok)) {
+				echo "HOOLA ";
+			}
+			else if(preg_match('~hoop~',$hhtok)) {
+				echo "HOOP<br />";
+			}
+			else if(preg_match('~hexprf~',$hhtok)) {
+				echo $_POST[$hhtok]." ";
+			}
+			else if(preg_match('~hexprs~',$hhtok)) {
+				echo $_POST[$hhtok]."! ";
+			}
+			else {
+				if(strcmp($hhtok,"biggerthan")==0) {
+					echo "BIGGER_THAN ";
+				}
+			}
+		}
+
+		echo "CLOSEBOX";
+
+$JROPE = [];
+		$MBOX = [];
+
+else if(strcmp($info[0],"jrope")==0 {
+				$JROPE[$info[1]] = $info[2];
+			}
+			else if(strcmp($info[0],"mbox")==0 {
+				$MBOX[$info[1]] = $info[2];
+			}
+
+foreach($JROPE as $key=>$value) {
+			if(empty($value)) {
+				echo "JROPE ".$key."#<br />";
+			}
+			else {
+				echo "JROPE ".$key." AS ".$value."#<br />";
+			}
+		}
+
+		foreach($MBOX as $key=>$value) {
+			if(empty($value)) {
+				echo "MBOX ".$key."#<br />";
+			}
+			else {
+				echo "MBOX ".$key." AS ".$value."#<br />";
+			}
+		}
+
+++hexprs;
+			var expr = document.createElement("textarea");
+			expr.name="hexprs"+"_"+hexprs;
+
+hoolahoop.push(expr.name);
+
+else if(data=="arexp") {
+			++hexprf;
+
+			var expr = document.createElement("textarea");
+
+			if(hexprf%2!=0) {
+				expr.name = "hexprf"+"_"+hexprf;
+				expr.id = expr.name;
+			}
+			if(hexprf%2==0) {
+				var hexprs = hexprf;
+				expr.name = "hexprs"+"_"+hexprs;
+				expr.id = expr.name;
+			}
+			expr.addEventListener('mouseleave',hideExpr);
+			
+			hoolahoop.push(expr.name);
+			document.getElementById('hoolahoop').value = hoolahoop;
+
+		}
+		<?php
+	$_POST['code'] = str_ireplace("<br>","\n",$_POST['code']);
+	exec('./toyBox "'.$_POST['code'].'" ', $out);
+
+	$arrSize = sizeof($out);
+						
+	for($i=0;$i<$arrSize;$i++){
+		echo("&nbsp"."&nbsp".$out[$i]."<br>");
+	}
+	
+?>
+
+if (tab=="variablesTab") {
+		variables.style.display = 'block';
+		operations.style.display = 'none';
+		operators.style.display = 'none';
+		numbers.style.display = 'none';
+
+		$('#varButton').css('background-color','#E5FFCC');
+		$('#varButton').css('color','#254117');
+
+		$('#operationsButton').css('background-color','#4E9258');
+		$('#operationsButton').css('color','#FAFAFA');
+	
+		$('#operatorsButton').css('background-color','#4E9258');
+		$('#operatorsButton').css('color','#FAFAFA');
+	
+		$('#numbersButton').css('background-color','#4E9258');
+		$('#numbersButton').css('color','#FAFAFA');
+	}
+	else if (tab=="operationsTab") {
+		variables.style.display = 'none';
+		operations.style.display = 'block';
+		operators.style.display = 'none';
+		numbers.style.display = 'none';
+
+		$('#operationsButton').css('background-color','#E5FFCC');
+		$('#operationsButton').css('color','#254117');
+
+		$('#varButton').css('background-color','#4E9258');
+		$('#varButton').css('color','#FAFAFA');
+
+		$('#operatorsButton').css('background-color','#4E9258');
+		$('#operatorsButton').css('color','#FAFAFA');
+
+		$('#numbersButton').css('background-color','#4E9258');
+		$('#numbersButton').css('color','#FAFAFA');	
+	}
+	else if (tab=="operatorsTab") {
+		variables.style.display = 'none';
+		operations.style.display = 'none';
+		operators.style.display = 'block';
+		numbers.style.display = 'none';
+
+
+		$('#operatorsButton').css('background-color','#E5FFCC');
+		$('#operatorsButton').css('color','#254117');
+
+		$('#varButton').css('background-color','#4E9258');
+		$('#varButton').css('color','#FAFAFA');	
+
+		$('#operationsButton').css('background-color','#4E9258');
+		$('#operationsButton').css('color','#FAFAFA');	
+
+		$('#numbersButton').css('background-color','#4E9258');
+		$('#numbersButton').css('color','#FAFAFA');	
+	}
+	else if (tab=="numbersTab") {
+		variables.style.display = 'none';
+		operations.style.display = 'none';
+		operators.style.display = 'none';
+		numbers.style.display = 'block';
+
+
+		$('#numbersButton').css('background-color','#E5FFCC');
+		$('#numbersButton').css('color','#254117');
+
+		$('#varButton').css('background-color','#4E9258');
+		$('#varButton').css('color','#FAFAFA');	
+
+		$('#operationsButton').css('background-color','#4E9258');
+		$('#operationsButton').css('color','#FAFAFA');	
+
+		$('#operatorsButton').css('background-color','#4E9258');
+		$('#operatorsButton').css('color','#FAFAFA');	
+	}
+
+/**
+function showTabs(tab) {
+	var ddtab = document.getElementById('panel1');
+	var scripttab = document.getElementById('panel2');
+	var resultstab = document.getElementById('panel3');
+
+	if(tab=="ddTab") {
+		ddtab.style.display = 'block';
+		scripttab.style.display = 'none';
+		resultstab.style.display = 'none';
+
+		$('#ddButton').css('background-color','#E5FFCC');
+		$('#ddButton').css('color','#254117');
+
+		$('#scriptButton').css('background-color','#4E9258');
+		$('#scriptButton').css('color','#FAFAFA');
+	
+		$('#resultsButton').css('background-color','#4E9258');
+		$('#resultsButton').css('color','#FAFAFA');
+	}
+	else if (tab=="scriptTab") {
+		ddtab.style.display = 'none';
+		scripttab.style.display = 'block';
+		resultstab.style.display = 'none';
+
+		$('#scriptButton').css('background-color','#E5FFCC');
+		$('#scriptButton').css('color','#254117');
+
+		$('#ddButton').css('background-color','#4E9258');
+		$('#ddButton').css('color','#FAFAFA');
+	
+		$('#resultsButton').css('background-color','#4E9258');
+		$('#resultsButton').css('color','#FAFAFA');
+		
+	}
+	else if (tab=="resultsTab") {
+		ddtab.style.display = 'none';
+		scripttab.style.display = 'none';
+		resultstab.style.display = 'block';
+
+		$('#resultsButton').css('background-color','#E5FFCC');
+		$('#resultsButton').css('color','#254117');
+
+		$('#scriptButton').css('background-color','#4E9258');
+		$('#scriptButton').css('color','#FAFAFA');
+	
+		$('#ddButton').css('background-color','#4E9258');
+		$('#ddButton').css('color','#FAFAFA');
+	}	
+}
+**/
+
+var res = data.split("_");
+
+		var varName = res[0] + "_" + "var" + res[1];
+
+		var varInfo = document.getElementById(varName);
+	
+		var varslist = document.getElementById('vardec');
+		var varslistval = varslist.value;
+	
+		var token = varName + "_" + varInfoVal;
+
+		varslist.value = varslistval.replace(token," ");
+		
+
+		image.parentNode.removeChild(image);
+		if(varInfo) {
+			varInfo.parentNode.removeChild(varInfo);
+		}	
+

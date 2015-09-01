@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Toybox Programming Language</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Toybox PL</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="toybox.html">About Toybox</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="toybox.html">About Toybox</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+
+<div class="container">
+		<div class="col s12 m12 l12" style="text-align: center;">
+				<h1>Background of the Project</h1>
+				<p>
+					Submitted as final project for CMSC214 under Prof. Sandoval. <br>
+					This is a child's programming language.<br>
+				</p>
+		</div>
+		<div class="col s12 m12 l12" style="text-align: center;">
+				<h3>Toybox Programming Language Specification</h3>
+		</div>
+
+    <div class="col s12 -m12 l12" style="text-align: left;">
+    <h5>Overview</h5>
+    <p>This is a specification manual for Toybox, a programming language specifically developed using terms associated with playing and toys.
+</p>
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test')">I. SCOPE</h6>
+    <ul id="staggered-test">
+      <li style="opacity:0">This specification distinguishes between several kinds of errors.</li>
+    </ul>
+
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test3')">II. SOURCE CODE REPRESENTATION</h6>
+    <ul id="staggered-test3">
+      <li style="opacity:0">Source code is Unicode text encoded in UTF-8. Each code is distinct; upper and lower case letters are different characters.</li>
+      <li style="opacity:0"><b>A. Characters</b></li>
+      <li style="opacity:0">&nbsp The following terms are used to denote specific Unicode character classes:</li>
+      <br>
+      <li style="opacity:0">&nbsp; newline  = the unicode code point U+000A</li>
+      <li style="opacity:0">&nbsp; unicode_char = an arbitrary Unicode code point except newline</li>
+      <li style="opacity:0">&nbsp; unicode_letter = a Unicode code point classified as letter</li>
+      <li style="opacity:0">&nbsp; unicode_digit = a Unicode code point classified as decimal digit</li>
+      <br>
+      <li style="opacity:0"><b>B. Letters and Digits</b></li>
+      <li style="opacity:0">&nbsp; The underscore character ( “_” ) is considered a letter.</li>
+      <br>
+      <li style="opacity:0">&nbsp; letter    = unicode_letter | “_”</li>
+      <li style="opacity:0">&nbsp; decimal_digit   = “0” . . . “9”</li>
+      <li style="opacity:0">&nbsp; hex_digit   = “0” . . . “9” | “A” . . . “F” | “a” . . . “f”</li>
+    </ul>
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test4')">III. LEXICAL ELEMENTS</h6>
+    <ul id="staggered-test4">
+      <li style="opacity:0"><b>A. Program Start and Termination</b></li>
+      <li style="opacity:0">&nbsp; A Toybox program would begin with an OPENBOX declaration, and would be terminated by the CLOSEBOX clause.</li>
+      
+      <li style="opacity:0">&nbsp; OPENBOX</li>
+        <li style="opacity:0">&nbsp; &nbsp; &lt;statement&gt;#</li>
+      <li style="opacity:0">&nbsp; CLOSEBOX</li>
+      <br>
+      <li style="opacity:0"><b>B. Whitespace</b></li>
+      <li style="opacity:0">&nbsp; Spaces indicate the separation of one variable from another variable or from a keyword in a statement or expression. Spaces found within string markers would be considered as part of that string.</li>
+      <li style="opacity:0">&nbsp; Newlines can be considered a part of a multiple-line comment until the closing comment token is encountered.</li>
+      <li style="opacity:0">&nbsp; Newline can indicate the end of a single-line comment.</li>
+      <br>
+      <li style="opacity:0"><b>C. Comments</b></li>
+      <li style="opacity:0">&nbsp; There are two forms of comments.</li>
+      <br>
+      <li style="opacity:0">&nbsp; &nbsp; Single-line comments are started by “--” and terminated by a newline.</li>
+
+      <li style="opacity:0">&nbsp; Example: </li>
+      <li style="opacity:0">&nbsp; &nbsp;  -- This is a sample comment </li>
+      <li style="opacity:0">&nbsp;  &lt;statement&gt; -- Comment here </li>
+
+      <li style="opacity:0">&nbsp;  &nbsp; -- This is a sample comment </li>
+      <li style="opacity:0">&nbsp;  &lt;statement&gt; </li>
+      <br>
+      <li style="opacity:0">&nbsp; &nbsp; Multi-line comments are started by &lt;! and terminated by !&gt;  </li>
+
+      <li style="opacity:0">&nbsp;  Example: </li>
+      <li style="opacity:0">&nbsp;  &lt;! </li>
+      <li style="opacity:0">&nbsp;  &nbsp;    This is a very long </li>
+      <li style="opacity:0">&nbsp;  &nbsp;    multiline </li>
+      <li style="opacity:0">&nbsp;  &nbsp;    sample comment </li>
+      <li style="opacity:0">&nbsp;  &nbsp;    test 1 2 3 4 . . . </li>
+      <li style="opacity:0">&nbsp;  !&gt; </li>
+      <li style="opacity:0">&nbsp;  &nbsp;  &lt;statement&gt; </li>
+      <br>
+      <li style="opacity:0"><b>D.  Tokens </b></li>
+      <li style="opacity:0">&nbsp; Tokens form the vocabulary of the Toybox language. </li>
+      <li style="opacity:0">&nbsp; &nbsp; There are four classes: identifiers, keywords, operators and delimiters and literals. </li>
+      <li style="opacity:0">&nbsp; &nbsp; White space, horizontal tabs and newlines are ignored except if it separates tokens. </li>
+      <br>
+      <li style="opacity:0"><b>E. Hashtag and Colon </b></li>
+      <li style="opacity:0">&nbsp; The grammar uses hashtag “#” as statement terminators </li>
+      <br>
+      <li style="opacity:0"><b>F.  Identifiers </b></li>
+      <li style="opacity:0">&nbsp; Identifier is a sequence of one or more letters and digits. The first character in an identifier must be a letter. Identifiers name program entities such as variables and types.</li>
+      <li style="opacity:0">&nbsp; &nbsp; identifier = letter {letter | unicode_digit} </li>
+      <br>
+      <li style="opacity:0"><b>G.  Keywords </b></li>
+      <li style="opacity:0">&nbsp;The following keywords are reserved and may not be used as identifiers.</li>
+      <li style="opacity:0"><img src="images/keywords.png"></li>
+    </ul>
+    <br>
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test5')">IV. VARIABLES</h6>
+    <ul id="staggered-test5">
+      <li style="opacity:0"><b>Definition</b></li>
+
+      <li style="opacity:0">&nbsp; A variable is a storage location for holding a value. The variable type determines the set of permissible values. </li>
+  
+      <li style="opacity:0"><b>Naming</b></li>
+      <li style="opacity:0">&nbsp;Variables must begin with a letter and may be followed only by letters, numbers and underscores. Variable identifiers may be in lowercase or uppercase letters. Spaces, dashes and symbols are not allowed as variable names. Furthermore, variable names are case-sensitive.</li>
+
+      <li style="opacity:0"><b>Declaration and Assignment</b></li>
+      <li style="opacity:0">&nbsp; A variable declaration reserves storage for a named variable. Structured variables of array and struct types have elements and fields that may be addressed individually. Each element acts like a variable. All variables declared are of static type. </li>
+    
+      <li style="opacity:0">&nbsp;To declare a variable, the keyword is “AS” preceded by the variable name.</li>
+
+      <li style="opacity:0">&nbsp;&nbsp;&nbsp;TYPE varName1 AS 1 #<br>
+      &nbsp;&nbsp;&nbsp;TYPE varName2 AS 3, varName3 AS 334.544 #</li>
+
+      <li style="opacity:0">&nbsp;A variable’s value is retrieved by referring to the variable in an expression - it is the most recent value assigned to the variable. If the variable has not yet been assigned a value, its value is the zero value for its type.</li>
+    </ul>
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test6')">V. TYPES</h6>
+    <ul id="staggered-test6">
+      <li style="opacity:0">&nbsp;A type determines the set of values and operations specific to values of that type. 
+      The following are the variable types of Toybox (upper -case letters required):</li>
+       <li style="opacity:0"><b>Character Types</b></li>
+       <li style="opacity:0">&nbsp;A character type represents the single-character value enclosed by single quotes.</li>
+       <li style="opacity:0">&nbsp;LETBLK temp AS ‘A’#</li>
+       <li style="opacity:0"><b>Numeric Types</b></li>
+       <li style="opacity:0">&nbsp;A numeric type represents sets of integer or floating-point values. RDUCKY, LETBLK, NUMBLK and MBOX are the numeric types under this programming language. </li>
+       <li style="opacity:0">&nbsp;RDUCKY value1 AS 99.9, value2 AS 0.1#</li>
+       <li style="opacity:0">&nbsp; NUMBLK value3 7# </li>
+    </ul>
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test7')">VI. FUNCTIONS</h6>
+    <ul id="staggered-test7">
+      <li style="opacity:0"><b>Definition</b></li>
+      <li style="opacity:0">&nbsp; A function declaration binds the identifier, function name to a function. A function is preceded with the opening keyword OPEN_PLAYPEN and the closing keyword CLOSE_PLAYPEN. THe syntax is as follows: </li>
+      <br>
+      <li style="opacity:0">&nbsp; OPEN_PLAYPEN <function name> : </li>
+      <li style="opacity:0">&nbsp; &nbsp; &lt;statement&gt; # </li>
+      <li style="opacity:0">&nbsp; CLOSE_PLAYPEN </li>
+      <br>
+      <li style="opacity:0"><b>Calling</b></li>
+      <li style="opacity:0">&nbsp;A function is called with:</li>
+      <br>
+      <li style="opacity:0">&nbsp;FIND_PLAYMATE &lt;function name&gt; GIVE [&lt;expression1&gt; [, &lt;expression2&gt; . . .]]# </li>
+      <br>
+      <li style="opacity:0">&nbsp;That is, an expression is formed by the function and followed by any arguments. The expressions’ values are obtained before the function is called.</li> 
+      <br>
+      <li style="opacity:0"><b>Returning</b></li>
+      <li style="opacity:0">&nbsp;Returning expressions from the function is accomplished through:</li>
+      <br>
+      <li style="opacity:0">&nbsp;RETURN_TO_PLAYMATE [&gt;expression1&lt;]#</li>
+      <br>
+      <li style="opacity:0">&nbsp;A returned value can be assigned to a variable as specified below:</li>
+
+      <li style="opacity:0">&nbsp;varname AS FIND_PLAYMATE &lt;function name&gt;]#</li>
+    </ul>
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test8')">VII. EXPRESSIONS</h6>
+    <ul id="staggered-test8">
+      <li style="opacity:0">An expression specifies the computation of a value by applying operators and functions to operands.</li>
+      <li style="opacity:0">Statements control execution.</li>
+      <br>
+      <li style="opacity:0"><b>A. Operands</b></li>
+      <br>
+      <li style="opacity:0"><b>B. Calling Syntax and Precedence</b></li>
+      <br>
+      <li style="opacity:0"><b>C. Arithmetic Operators</b></li>
+      <br>
+      <li style="opacity:0"><b>D. Comparison/Relational Operators</b></li>
+      <br>
+      <li style="opacity:0"><b>E. Logical Operators</b></li>
+      <br>
+      <li style="opacity:0"><b>F. Operator Precedence</b></li>
+    </ul>
+    
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test9')">VIII. INPUT/OUTPUT</h6>
+    <ul id="staggered-test9">
+      <li style="opacity:0"><b>SHOW</b> – the print/STDOUT operator. It prints all expressions concatenated with “AND” and terminated by “#”.</li>
+      <br>
+      <li style="opacity:0">&nbsp; SHOW &lt;expression&gt; [[AND] &lt;expression&gt; ...]# </li>
+      <br>
+      <li style="opacity:0">&nbsp; There is no current defined standard for printing to a file. </li>
+
+      <li style="opacity:0"><b>COLLECT</b> – accepts input from the user and stores the value in the given variable.</li>
+      <br>
+      <li style="opacity:0">&nbsp; COLLECT &lt;variableName&gt;# </li>
+      <br>
+      <li style="opacity:0">&nbsp; There is no current defined standard for printing to a file. </li>
+
+    </ul>
+
+    <h6 onclick="Materialize.showStaggeredList('#staggered-test10')">IX. STATEMENTS</h6>
+    <ul id="staggered-test10">
+      <li style="opacity:0">Statements control execution.</li>
+      <br>
+      <li style="opacity:0"><b>A. Empty Statements</b></li>
+      <br>
+      <li style="opacity:0"><b>B. Expression Statements</b></li>
+      <br>
+      <li style="opacity:0"><b>C. Assignment Statements</b></li>
+      <br>
+      <li style="opacity:0"><b>D. Conditional Statement</b></li>
+      <br>
+      <li style="opacity:0"><b>E. Loop Statements</b></li>
+
+    </ul>
+    
+      
+
+    
+
+      
+
+          
+      
+
+          
+    
+          
+    
+
+        
+
+          
+      
+  
+		</div>
+
+</div>
+ <footer class="page-footer light-blue lighten-1">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Toybox Programming Language</h5>
+          <p class="grey-text text-lighten-4">
+          This is a programming language specifically developed using terms associated with playing and toys.
+          </p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Developers</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Roinand Aguila</a></li>
+            <li><a class="white-text" href="#!">Mary Grace Angelie Aguirre</a></li>
+            <li><a class="white-text" href="#!">Roven Rommel Fuentes</a></li>
+            <li><a class="white-text" href="#!">Diana Magbanua</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Facebook</a></li>
+            <li><a class="white-text" href="#!">Twitter</a></li>
+            <li><a class="white-text" href="#!">Google</a></li>
+            <li><a class="white-text" href="#!">Reddit</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>

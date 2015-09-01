@@ -1,0 +1,20 @@
+<!
+This is a comment
+!>
+--a program to count numbers from 1 to N
+
+OPENBOX 
+NUMBLK n, count AS 0# 
+NUMBLK one AS 1#
+
+SHOW "Please input the value for N: "#
+COLLECT n#
+
+HOOLA count NOT_THE_SAME_AS n!
+	count AS count+one#
+	SHOW "Count:  ",count, "!"#
+	
+HOOP
+
+SHOW "END"#
+CLOSEBOX

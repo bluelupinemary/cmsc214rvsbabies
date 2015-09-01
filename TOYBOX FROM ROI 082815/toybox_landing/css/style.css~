@@ -1,0 +1,42 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+/* NEW FONTS: SOURCE SANS; */
+@font-face {
+  font-family: 'Source-Sans';
+  src: url('SourceSansPro-Regular.otf');
+}
+
+
+html,
+body {
+    height: 100%;
+    color: #222222;
+    font-family: "Source-Sans", SourceSansPro-Regular, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Source-Sans", SourceSansPro-Regular, sans-serif;
+    font-weight: bold;
+    display:inline-block;
+}
+
+
+.responsive-image{
+    height:auto;
+    width:100%;
+}
+.banner-landing{
+    margin-top: 100px;
+}
+
+.buttons{
+    margin-top: 180px;
+}
+.icon-block {
+  padding: 0 15px;
+}
